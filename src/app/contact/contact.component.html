@@ -1,0 +1,24 @@
+<form [formGroup] = "myReactiveForm" (ngSubmit)="onSubmit()">
+<div formGroupName="userDetail">
+    <div class="form-group">
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email">
+    <small class="text-danger"
+     *ngIf="!myReactiveForm.get('userDetail.email').valid&&myReactiveForm.get('userDetail.email').touched"
+    >Please enter valid email</small>
+    </div>
+    <div class="form-group">
+       <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+    </div>
+</div>
+    <div class="form-group">
+      <input type="number" class="form-control" id="monumber" placeholder="Mobile Number" formControlName="monumber">
+      </div>
+    <div class="form-group">
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="languages">
+          <option>Java</option>
+          <option>PHP</option>
+          <option>Python</option>
+          </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
