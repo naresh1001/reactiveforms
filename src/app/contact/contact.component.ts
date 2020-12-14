@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -17,12 +17,18 @@ myReactiveForm: FormGroup;
         'name': new FormControl(null,Validators.required),
       }),
       'monumber':new FormControl(9953839784),
-      'languages':new FormControl("PHP")
+      'languages':new FormControl("PHP"),
+      'skills': new FormArray([
+        new FormControl(null,Validators.required),
+          ])
     });
   }
 
   onSubmit(){
     console.log(this.myReactiveForm);
+  }
+  addMoreSkills(){
+    (<FormArray>this.myReactiveForm.get('skills')).push(new FormControl(null,Validators.required))
   }
 
 }
